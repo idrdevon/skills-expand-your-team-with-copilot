@@ -1,0 +1,210 @@
+name: ⭐ Feature Enhancement
+description: Request new functionality or major improvements to the activities system
+title: "[FEATURE] "
+labels: ["enhancement", "new-feature", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ⭐ Feature Enhancement Request
+        
+        Use this template to request new features or major functionality improvements for the activities system.
+        
+        **Before submitting:** Check if this is a simple change that fits better in other templates (New Activity, Modify Activity, UI/UX Enhancement).
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: Describe the new feature or enhancement you'd like to see
+      placeholder: e.g., "Add ability to export participant lists to Excel/CSV format", "Create a calendar view showing all activities by date and time"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-solving
+    attributes:
+      label: Problem This Solves
+      description: What problem or need would this feature address?
+      placeholder: e.g., "Teachers currently have to manually copy student lists for attendance. An export feature would save significant time and reduce errors."
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: Write a user story describing how this feature would be used
+      placeholder: "As a teacher, I want to export student lists so that I can use them for attendance tracking and parent communication."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of enhancement is this?
+      options:
+        - Data Export/Import
+        - Reporting and Analytics
+        - Communication/Notifications
+        - Calendar/Scheduling
+        - User Management
+        - Activity Management
+        - Search and Filtering
+        - Integration with Other Systems
+        - Mobile/Accessibility Features
+        - Administrative Tools
+        - Student Self-Service
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: primary-user
+    attributes:
+      label: Primary User
+      description: Who would primarily use this feature?
+      options:
+        - Teachers
+        - Students
+        - Administrators
+        - All Users
+        - External Users (parents, etc.)
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-workflow
+    attributes:
+      label: Detailed Workflow
+      description: Describe step-by-step how this feature should work
+      placeholder: |
+        1. Teacher logs in and views activity
+        2. Teacher clicks "Export Participants" button
+        3. System shows export options (Excel, CSV, PDF)
+        4. Teacher selects format and clicks "Download"
+        5. File downloads with student names, emails, and activity details
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List specific criteria that define when this feature is complete and working
+      placeholder: |
+        - Export button appears on each activity page for teachers
+        - Export includes student name, email, and registration date
+        - File downloads in selected format (CSV/Excel)
+        - Export works for activities with 0 to maximum participants
+        - No sensitive data is included in export
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity-estimate
+    attributes:
+      label: Complexity Estimate
+      description: How complex do you think this feature is to implement?
+      options:
+        - Simple - Should be straightforward to add
+        - Medium - Moderate complexity, might need some research
+        - Complex - Significant development effort required
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority-level
+    attributes:
+      label: Priority Level
+      description: How important is this feature for your work?
+      options:
+        - Critical - Essential for current operations
+        - High - Would significantly improve daily work
+        - Medium - Would be helpful but not urgent
+        - Low - Nice to have when time permits
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Current Workarounds
+      description: How do you currently handle this need? What are the limitations?
+      placeholder: e.g., "Currently manually copy/paste student emails into a spreadsheet, which is time-consuming and error-prone"
+
+  - type: textarea
+    id: related-features
+    attributes:
+      label: Related Features
+      description: Are there other features this connects to or depends on?
+      placeholder: e.g., "Would work well with the proposed attendance tracking feature", "Should integrate with the existing participant management"
+
+  - type: checkboxes
+    id: considerations
+    attributes:
+      label: Implementation Considerations
+      description: What should be considered when implementing this feature?
+      options:
+        - label: User permissions and security
+        - label: Data privacy and student information protection
+        - label: Mobile device compatibility
+        - label: Integration with existing workflows
+        - label: Performance impact on the system
+        - label: Training requirements for users
+        - label: Administrative approval needed
+
+  - type: textarea
+    id: success-metrics
+    attributes:
+      label: Success Metrics
+      description: How would you measure if this feature is successful?
+      placeholder: e.g., "Reduces time spent on attendance preparation by 50%", "Used by at least 80% of teachers within first month"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this feature?
+      placeholder: e.g., "Requested by multiple teachers", "Similar to feature in our previous system", "Part of school's digital transformation initiative"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Implementation Guidelines:**
+        - Analyze the feature requirements and determine the best approach
+        - Consider which files need modification based on feature type:
+          - Backend API: `src/backend/routers/` (new endpoints if needed)
+          - Frontend UI: `src/static/` files for new interface elements
+          - Database: `src/backend/database.py` for new data structures
+          - Static assets: New CSS/JavaScript for feature functionality
+        - Break down complex features into smaller, manageable components
+        - Ensure new feature integrates well with existing codebase
+        - Follow existing code patterns and conventions
+        - Consider error handling and edge cases
+        - Test feature thoroughly with various scenarios
+        
+        **Development Approach:**
+        1. Analyze requirements and create implementation plan
+        2. Design any necessary API endpoints or data structures
+        3. Implement backend functionality if needed
+        4. Create or modify frontend components
+        5. Add appropriate styling and user interaction
+        6. Test feature with various use cases
+        7. Ensure no existing functionality is broken
+        
+        **Acceptance Criteria Verification:**
+        - [ ] All specified acceptance criteria are met
+        - [ ] Feature works as described in the workflow
+        - [ ] User experience is intuitive and consistent
+        - [ ] Error handling is appropriate and user-friendly
+        - [ ] Feature integrates seamlessly with existing functionality
+        - [ ] Performance impact is minimal
+        - [ ] Code follows existing patterns and conventions

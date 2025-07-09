@@ -1,0 +1,174 @@
+name: 🐛 Bug Report
+description: Report a problem or issue with the activities system
+title: "[BUG] "
+labels: ["bug", "teacher-report", "needs-investigation"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Bug Report
+        
+        Use this template to report problems, errors, or unexpected behavior in the activities system.
+        
+        **Before submitting:** Try refreshing your browser and logging out/back in to see if the issue persists.
+
+  - type: dropdown
+    id: bug-category
+    attributes:
+      label: What area has the problem?
+      description: Which part of the system is experiencing issues?
+      options:
+        - Login/Authentication
+        - Student Registration/Signup
+        - Student Removal/Unregistration
+        - Activity Display/Information
+        - Activity Filtering/Search
+        - Student List/Participants
+        - User Interface/Design
+        - Performance/Speed
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: What happened?
+      description: Describe the problem in detail
+      placeholder: e.g., "When I try to register a student for Drama Club, I get an error message and the student is not added to the list."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should have happened?
+      description: Describe what you expected to happen instead
+      placeholder: e.g., "The student should be successfully added to the Drama Club participant list and I should see a confirmation message."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the exact steps to reproduce this problem
+      placeholder: |
+        1. Log in as teacher
+        2. Click on "Drama Club"
+        3. Click "Register Student"
+        4. Enter student email: student@mergington.edu
+        5. Click "Register"
+        6. Error appears...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: How frequently do you encounter this problem?
+      options:
+        - Always (every time I try)
+        - Often (most of the time)
+        - Sometimes (about half the time)
+        - Rarely (only happened once or twice)
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: affected-activity
+    attributes:
+      label: Affected Activity (if specific)
+      description: Does this problem happen with a specific activity?
+      placeholder: e.g., "Drama Club", "Math Club", "All activities", "N/A"
+
+  - type: input
+    id: affected-student
+    attributes:
+      label: Affected Student Email (if specific)
+      description: Does this problem happen with a specific student? (Use fake email if privacy concern)
+      placeholder: e.g., "john.doe@mergington.edu", "All students", "N/A"
+
+  - type: textarea
+    id: error-message
+    attributes:
+      label: Error Messages
+      description: Copy any error messages you see (if any)
+      placeholder: e.g. Error - Failed to update activity, or No error message displayed
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser Used
+      description: Which web browser were you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not sure
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device Type
+      description: What device were you using?
+      options:
+        - Desktop/Laptop Computer
+        - Tablet
+        - Smartphone
+        - Not sure
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact Level
+      description: How much does this affect your work?
+      options:
+        - Critical - Cannot perform essential tasks
+        - High - Significantly impacts daily work
+        - Medium - Annoying but workarounds exist
+        - Low - Minor inconvenience
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Any other details that might help fix this problem?
+      placeholder: e.g., "This started happening after the last update", "Only happens during busy periods", "Similar to issue reported last month"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Investigation Guidelines:**
+        - Review the reported steps and try to reproduce the issue
+        - Check relevant code areas based on the bug category:
+          - Authentication: `src/backend/routers/auth.py`
+          - Registration: `src/backend/routers/activities.py` (signup/unregister endpoints)
+          - Display: Frontend files in `src/static/`
+          - Database: `src/backend/database.py`
+        - Look for common issues like:
+          - Input validation problems
+          - Error handling gaps
+          - Race conditions in concurrent operations
+          - Frontend/backend data format mismatches
+        - Create test cases to verify the fix
+        - Ensure fix doesn't break other functionality
+        
+        **Acceptance Criteria:**
+        - [ ] Issue can be reproduced following the reported steps
+        - [ ] Root cause is identified and documented
+        - [ ] Fix is implemented with minimal code changes
+        - [ ] Fix is tested and verified to resolve the issue
+        - [ ] No regressions introduced in other functionality
+        - [ ] Error handling is improved if applicable

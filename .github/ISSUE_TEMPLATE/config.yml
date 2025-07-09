@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📧 Contact IT Department
+    url: mailto:it@mergington.edu
+    about: For urgent technical issues that require immediate attention, contact the IT department directly.
+  - name: 📖 Teacher Guidelines
+    url: https://github.com/idrdevon/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: Read the teacher guidelines and development documentation for additional context.
