@@ -1,0 +1,174 @@
+name: 👥 Student Management Request
+description: Request changes to student registrations or participant lists
+title: "[STUDENT MGMT] "
+labels: ["enhancement", "student-management", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 👥 Student Management Request
+        
+        Use this template to request changes to student registrations, move students between activities, or manage participant lists.
+        
+        **Before submitting:** Try using the regular registration/unregistration features first if this is a simple add/remove request.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Type of Request
+      description: What kind of student management change do you need?
+      options:
+        - Bulk register multiple students for an activity
+        - Bulk remove multiple students from an activity
+        - Move student(s) from one activity to another
+        - Fix incorrect student registrations
+        - Clear all participants from an activity
+        - Import student list from external source
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: primary-activity
+    attributes:
+      label: Primary Activity Name
+      description: What is the main activity involved in this request?
+      placeholder: e.g., "Drama Club", "Math Club", "Weekend Robotics Workshop"
+    validations:
+      required: true
+
+  - type: input
+    id: secondary-activity
+    attributes:
+      label: Secondary Activity Name (if applicable)
+      description: If moving students or involving multiple activities, what's the second activity?
+      placeholder: e.g., "Art Club", "Advanced Math", "N/A"
+
+  - type: textarea
+    id: student-list
+    attributes:
+      label: Student Email List
+      description: List the student emails involved in this request (one per line)
+      placeholder: |
+        john.doe@mergington.edu
+        jane.smith@mergington.edu
+        alex.johnson@mergington.edu
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-request
+    attributes:
+      label: Detailed Request
+      description: Explain exactly what needs to be done with these students
+      placeholder: e.g., "Remove all listed students from Drama Club and add them to Advanced Drama Club", "Add all students to Math Club for the spring semester"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason for Request
+      description: Why is this student management change needed?
+      options:
+        - Schedule conflict resolution
+        - Activity level change (beginner to advanced)
+        - Student request/preference
+        - Administrative decision
+        - Capacity management
+        - Semester/term transition
+        - Data correction/cleanup
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason-details
+    attributes:
+      label: Additional Reason Details
+      description: Provide more context about why this change is needed
+      placeholder: e.g., "Students completed beginner level and are ready for advanced curriculum", "Schedule change required due to facility availability"
+
+  - type: dropdown
+    id: timing
+    attributes:
+      label: When should this take effect?
+      description: When do you need this change implemented?
+      options:
+        - Immediately
+        - Next week
+        - Next month
+        - Next semester/term
+        - Specific date (mention in context below)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: notifications
+    attributes:
+      label: Student Notifications
+      description: How should students be notified of these changes?
+      options:
+        - label: Send email notifications to affected students
+        - label: I will notify students personally
+        - label: No notification needed
+        - label: Coordinate with parents/guardians
+
+  - type: dropdown
+    id: capacity-concerns
+    attributes:
+      label: Capacity Considerations
+      description: Are there capacity concerns with this request?
+      options:
+        - No capacity issues expected
+        - May exceed target activity capacity (but acceptable)
+        - Need to check capacity before proceeding
+        - Request may require capacity increase
+        - Other activities may need adjustments
+    validations:
+      required: true
+
+  - type: textarea
+    id: approval-status
+    attributes:
+      label: Approval Status
+      description: Has this request been approved by administration?
+      placeholder: e.g., "Approved by Principal Martinez on 2024-01-15", "Pending approval", "No approval required for this type of change"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help process this request?
+      placeholder: e.g., "This is part of a program restructuring", "Related to new teaching assignment", "Student feedback drove this change"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Implementation Guidelines:**
+        - Review the current participant lists in `src/backend/database.py`
+        - For bulk operations, consider creating a script or using database operations
+        - Validate all student emails exist and are in correct format
+        - Check activity capacity limits before adding students
+        - For moves between activities:
+          1. Remove from source activity first
+          2. Add to destination activity second
+          3. Verify both operations succeeded
+        - Update the `participants` arrays in `initial_activities` dictionary
+        - Consider if this is a data-only change or requires new functionality
+        - Test the changes are reflected correctly in the frontend
+        
+        **Acceptance Criteria:**
+        - [ ] All specified student email addresses are validated
+        - [ ] Requested changes are applied accurately to participant lists
+        - [ ] Activity capacity limits are respected
+        - [ ] Frontend displays updated participant information correctly
+        - [ ] Teachers can see the changes when they log in
+        - [ ] No duplicate registrations are created
+        - [ ] All affected activities show correct participant counts
+        - [ ] No existing data is accidentally modified

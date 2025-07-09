@@ -1,0 +1,145 @@
+name: ✏️ Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "[MODIFY ACTIVITY] "
+labels: ["enhancement", "modify-activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✏️ Modify Existing Activity
+        
+        Use this template to request changes to an existing extracurricular activity in the system.
+        
+        **Before submitting:** Make sure you know the exact name of the activity you want to modify.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name (Current)
+      description: What is the exact current name of the activity you want to modify?
+      placeholder: e.g., "Drama Club", "Math Club", "Weekend Robotics Workshop"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: change-type
+    attributes:
+      label: What needs to be changed?
+      description: Select all changes that need to be made
+      options:
+        - label: Activity name/title
+        - label: Activity description
+        - label: Meeting schedule (days/times)
+        - label: Maximum number of participants
+        - label: Other (specify in details below)
+
+  - type: input
+    id: new-name
+    attributes:
+      label: New Activity Name (if changing)
+      description: What should the new name be?
+      placeholder: e.g., "Advanced Drama Club", "Competitive Math Team"
+
+  - type: textarea
+    id: new-description
+    attributes:
+      label: New Activity Description (if changing)
+      description: Provide the updated description for the activity
+      placeholder: e.g., "An advanced drama program focusing on theatrical performance and stage production..."
+
+  - type: checkboxes
+    id: new-schedule-days
+    attributes:
+      label: New Meeting Days (if changing)
+      description: Which days should this activity meet? (Select all that apply)
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: new-start-time
+    attributes:
+      label: New Start Time (if changing)
+      description: When should the activity start? (24-hour format)
+      placeholder: e.g., "15:30" for 3:30 PM, "07:15" for 7:15 AM
+
+  - type: input
+    id: new-end-time
+    attributes:
+      label: New End Time (if changing)
+      description: When should the activity end? (24-hour format)
+      placeholder: e.g., "17:00" for 5:00 PM, "08:00" for 8:00 AM
+
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: New Maximum Participants (if changing)
+      description: What should the new maximum number of participants be?
+      placeholder: e.g., "20", "25", "30"
+
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: e.g., "Need to accommodate more students", "Schedule conflict with other activities", "Activity content has evolved"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How urgent is this change?
+      options:
+        - Low - Can wait for next update cycle
+        - Medium - Should be implemented within a few weeks
+        - High - Needed as soon as possible
+        - Critical - Blocks current operations
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-participants
+    attributes:
+      label: Current Participants Impact
+      description: How will this change affect currently enrolled students?
+      placeholder: e.g., "No impact on current students", "Current students need to be notified", "May need to move some students to accommodate new limits"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this change?
+      placeholder: e.g., "This change was approved by the principal", "Related to new curriculum requirements", "Student feedback requested this change"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Implementation Guidelines:**
+        - Locate the activity in `src/backend/database.py` in the `initial_activities` dictionary
+        - Update only the fields that are specified to change
+        - Preserve all existing data for unchanged fields
+        - For schedule changes, update both `schedule` (human-readable) and `schedule_details` (structured data)
+        - If changing maximum participants and current participants exceed new limit, preserve existing participants
+        - Test all changes work correctly in the frontend
+        - Ensure filtering and search still work after changes
+        
+        **Acceptance Criteria:**
+        - [ ] Specified changes are applied correctly to the activity
+        - [ ] Unchanged fields remain exactly the same
+        - [ ] Activity displays correctly in the frontend with updated information
+        - [ ] Current participants are preserved (unless maximum is reduced)
+        - [ ] Activity filtering and search work with updated data
+        - [ ] No other activities are accidentally modified
+        - [ ] No existing functionality is broken

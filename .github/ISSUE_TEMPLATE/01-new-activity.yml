@@ -1,0 +1,136 @@
+name: 🎯 Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[NEW ACTIVITY] "
+labels: ["enhancement", "new-activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎯 New Activity Request
+        
+        Use this template to request a new extracurricular activity be added to the Mergington High School activities system.
+        
+        **Before submitting:** Check if the activity already exists in the system by visiting the activities page.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What should this activity be called?
+      placeholder: e.g., "Photography Club", "Science Olympiad", "Creative Writing Workshop"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a clear, engaging description of the activity (1-2 sentences)
+      placeholder: e.g., "Learn the fundamentals of photography including composition, lighting, and digital editing techniques while building a portfolio of your work."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: What type of activity is this?
+      options:
+        - Academic (math, science, debate, etc.)
+        - Arts & Creative (art, music, drama, writing)
+        - Technology (coding, robotics, computer science)
+        - Sports & Recreation
+        - Community Service & Volunteering
+        - Special Interest & Hobbies
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Meeting Days
+      description: Which days will this activity meet? (Select all that apply)
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: When does the activity start? (24-hour format)
+      placeholder: e.g., "15:30" for 3:30 PM, "07:15" for 7:15 AM
+    validations:
+      required: true
+
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: When does the activity end? (24-hour format)
+      placeholder: e.g., "17:00" for 5:00 PM, "08:00" for 8:00 AM
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What's the maximum number of students that can participate?
+      placeholder: e.g., "15", "20", "25"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-sponsor
+    attributes:
+      label: Teacher Sponsor
+      description: Which teacher will sponsor/supervise this activity?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements-materials
+    attributes:
+      label: Special Requirements or Materials
+      description: Are there any special requirements, materials, or equipment needed?
+      placeholder: e.g., "Students must provide their own art supplies", "Access to computer lab required", "No special requirements"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this activity?
+      placeholder: e.g., "This activity was requested by multiple students", "Replaces the old Photography class", "Should be available starting next semester"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Implementation Guidelines:**
+        - Add the new activity to `src/backend/database.py` in the `initial_activities` dictionary
+        - Follow the existing data structure with fields: `description`, `schedule`, `schedule_details`, `max_participants`, `participants`
+        - The `schedule` field should be human-readable (e.g., "Mondays, 3:30 PM - 5:00 PM")
+        - The `schedule_details` should contain structured data with `days` array, `start_time`, and `end_time`
+        - Set `participants` to an empty list initially
+        - Test the activity appears correctly in the frontend
+        - Ensure the activity can be filtered and searched properly
+        
+        **Acceptance Criteria:**
+        - [ ] Activity appears in the activities list on the main page
+        - [ ] Activity details are displayed correctly (name, description, schedule, capacity)
+        - [ ] Teachers can register students for the activity
+        - [ ] Activity can be filtered by day and time
+        - [ ] Activity shows correct capacity information
+        - [ ] No existing functionality is broken

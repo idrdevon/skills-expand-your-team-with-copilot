@@ -1,0 +1,179 @@
+name: 🎨 UI/UX Enhancement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["enhancement", "ui-ux", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎨 UI/UX Enhancement Request
+        
+        Use this template to request improvements to how the activities system looks or works for teachers and students.
+        
+        **Before submitting:** Consider if this is about fixing a broken feature (use Bug Report) or adding new functionality.
+
+  - type: dropdown
+    id: enhancement-area
+    attributes:
+      label: What area needs improvement?
+      description: Which part of the interface or experience needs enhancement?
+      options:
+        - Overall page layout and design
+        - Activity cards and information display
+        - Login and authentication process
+        - Student registration process
+        - Activity filtering and search
+        - Participant lists and management
+        - Mobile/tablet responsiveness
+        - Colors, fonts, and visual design
+        - Navigation and menus
+        - Loading and performance
+        - Error messages and feedback
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: Describe how things work now and what's problematic about it
+      placeholder: e.g., "Currently, activity cards are too small and it's hard to read the descriptions. The text is cramped and teachers have to squint to see details."
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-improvement
+    attributes:
+      label: Desired Improvement
+      description: Describe how you'd like this to work or look instead
+      placeholder: e.g., "Activity cards should be larger with more readable text. The description should be easier to read and maybe use a larger font size."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-affected
+    attributes:
+      label: Who is primarily affected?
+      description: Which users would benefit most from this improvement?
+      options:
+        - Teachers (primary users)
+        - Students (viewing information)
+        - Both teachers and students
+        - Administrators
+        - All users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-priority
+    attributes:
+      label: Device Priority
+      description: Which devices are most important for this improvement?
+      options:
+        - Desktop/laptop computers (most important)
+        - Tablets (most important)
+        - Mobile phones (most important)
+        - All devices equally
+        - Not device-specific
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case-scenario
+    attributes:
+      label: Use Case Scenario
+      description: Describe a typical scenario where this improvement would help
+      placeholder: e.g., "When I'm quickly reviewing activities during lunch break, I need to be able to scan information quickly. The current layout makes this difficult because..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: improvement-type
+    attributes:
+      label: Type of Improvement (select all that apply)
+      description: What kind of improvements are you looking for?
+      options:
+        - label: Make things easier to see/read (visual clarity)
+        - label: Make things faster to use (efficiency)
+        - label: Make things easier to understand (usability)
+        - label: Make things look more professional (aesthetics)
+        - label: Reduce clicks/steps needed (workflow)
+        - label: Better organization of information (structure)
+        - label: More helpful feedback/guidance (user guidance)
+
+  - type: dropdown
+    id: impact-level
+    attributes:
+      label: Impact on Daily Work
+      description: How much would this improvement help your daily work?
+      options:
+        - High - Would significantly improve my daily workflow
+        - Medium - Would make things noticeably better
+        - Low - Would be a nice addition but not essential
+    validations:
+      required: true
+
+  - type: textarea
+    id: inspiration-examples
+    attributes:
+      label: Examples or Inspiration
+      description: Are there other websites or apps that do this well? Provide examples if helpful
+      placeholder: e.g., "The way Google Classroom displays course cards is very clear and easy to scan", "Similar to how our school's gradebook interface works"
+
+  - type: dropdown
+    id: implementation-priority
+    attributes:
+      label: Implementation Priority
+      description: How urgent is this improvement?
+      options:
+        - Low - Nice to have when time permits
+        - Medium - Should be implemented in next few months
+        - High - Important for current semester
+        - Critical - Needed as soon as possible
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this improvement?
+      placeholder: e.g., "Other teachers have mentioned this too", "This is based on student feedback", "Related to accessibility requirements"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### 🤖 For Copilot Agent
+        
+        **Implementation Guidelines:**
+        - Review relevant frontend files based on the enhancement area:
+          - Layout/design: `src/static/styles.css` and `src/static/index.html`
+          - Activity cards: CSS classes `.activity-card` and related styles
+          - Authentication: Login modal and related JavaScript
+          - Registration: Modal forms and form styling
+          - Filtering: Filter controls and JavaScript functionality
+        - Focus on improving user experience without breaking existing functionality
+        - Consider responsive design for different screen sizes
+        - Test changes on different devices if device-specific
+        - Ensure changes maintain the current design theme and consistency
+        - Optimize for the primary user type mentioned in the request
+        
+        **Design Principles:**
+        - Maintain visual consistency with existing design
+        - Prioritize readability and accessibility
+        - Keep changes simple and intuitive
+        - Preserve all existing functionality
+        - Consider performance impact of visual changes
+        
+        **Acceptance Criteria:**
+        - [ ] Requested improvement is implemented as described
+        - [ ] Change improves user experience for specified user type
+        - [ ] Design remains consistent with overall application theme
+        - [ ] All existing functionality continues to work
+        - [ ] Improvement works well on specified device types
+        - [ ] No negative impact on application performance
+        - [ ] Change is visually appealing and professional
