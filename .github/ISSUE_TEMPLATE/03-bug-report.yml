@@ -97,7 +97,7 @@ body:
     attributes:
       label: Error Messages
       description: Copy any error messages you see (if any)
-      placeholder: e.g., "Error: Failed to update activity" or "No error message displayed"
+      placeholder: e.g. Error - Failed to update activity, or No error message displayed
 
   - type: dropdown
     id: browser
